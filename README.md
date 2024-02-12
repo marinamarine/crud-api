@@ -2,7 +2,7 @@
 
 1. [Link to the task](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/crud-api/assignment.md)
 2. **Deadline**: 2024-02-13 01:00 (UTC +01:00)
-3. **Score**: X / 222
+3. **Score**: 152 / 222
 
 To install app use `npm instal`. Make sure you are using node version >20.
 
@@ -12,6 +12,17 @@ To run app use
 `npm run start:dev`
 `npm run start:prod`
 
+
+Test user data:
+```
+{
+    "username": "Jon Snow",
+    "age": 33,
+    "hobbies": ["kill", "die", "know nothing"]
+}
+```
+
+
 # Scoring: CRUD API
 
 ## Basic Scope
@@ -20,8 +31,8 @@ To run app use
 - [x] **+10** **GET** `api/users` implemented properly
 - [x] **+10** **GET** `api/users/{userId}` implemented properly
 - [x] **+10** **POST** `api/users` implemented properly
-- [ ] **+10** **PUT** `api/users/{userId}` implemented properly
-- [ ] **+10** **DELETE** `api/users/{userId}` implemented properly
+- [x] **+10** **PUT** `api/users/{userId}` implemented properly
+- [x] **+10** **DELETE** `api/users/{userId}` implemented properly
 - [x] **+6** Users are stored in the form described in the technical requirements
 - [x] **+6** Value of `port` on which application is running is stored in `.env` file
 
