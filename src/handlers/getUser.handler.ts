@@ -23,10 +23,10 @@ export default (
     const user = getUser(userId);
     if (user) {
       handleResponse<User>(res, StatusCode.SuccessOK, user);
+    } else {
+      handleResponse<ResponseMessageData>(res, StatusCode.ClientErrorNotFound, {
+        message: 'User does not exist',
+      });
     }
-
-    handleResponse<ResponseMessageData>(res, StatusCode.ClientErrorNotFound, {
-      message: 'User does not exist',
-    });
   }
 };
