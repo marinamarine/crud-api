@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "lib": ["ESNext"],
     "module": "CommonJS",
+    "rootDir": "./",
     "moduleResolution": "Node",
     "noUncheckedIndexedAccess": true,
     "strictNullChecks": true,

@@ -6,7 +6,8 @@
     "node": "^v20.11"
   },
   "scripts": {
-    "start:dev": "nodemon --inspect src/index.ts"
+    "start:dev": "nodemon --inspect src/index.ts",
+    "start:prod": "webpack && node dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,9 @@
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "dotenv": "^16.4.2",
