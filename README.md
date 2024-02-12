@@ -10,6 +10,7 @@ Before running app rename `.env.example` to `.env`
 
 To run app use 
 `npm run start:dev`
+`npm run start:prod`
 
 # Scoring: CRUD API
 
@@ -21,15 +22,15 @@ To run app use
 - [x] **+10** **POST** `api/users` implemented properly
 - [ ] **+10** **PUT** `api/users/{userId}` implemented properly
 - [ ] **+10** **DELETE** `api/users/{userId}` implemented properly
-- [ ] **+6** Users are stored in the form described in the technical requirements
-- [ ] **+6** Value of `port` on which application is running is stored in `.env` file
+- [x] **+6** Users are stored in the form described in the technical requirements
+- [x] **+6** Value of `port` on which application is running is stored in `.env` file
 
 ## Advanced Scope
 - [x] **+30** Task implemented on Typescript 
 - [x] **+10** Processing of requests to non-existing endpoints implemented properly
 - [x] **+10** Errors on the server side that occur during the processing of a request should be handled and processed properly
 - [x] **+10** Development mode: `npm` script `start:dev` implemented properly
-- [ ] **+10** Production mode: `npm` script `start:prod` implemented properly
+- [x] **+10** Production mode: `npm` script `start:prod` implemented properly
 
 ## Hacker Scope
 - [ ] **+30** There are tests for API (not less than **3** scenarios)
