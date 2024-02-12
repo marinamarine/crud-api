@@ -29,7 +29,7 @@ const validateUserData = (user: Omit<User, 'id'>) => {
   if (!user?.username) {
     return false;
   }
-  if (!user?.hobbies || !user.hobbies.length) {
+  if (!user?.hobbies) {
     return false;
   }
   return true;
