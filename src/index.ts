@@ -6,6 +6,7 @@ import {
   getUserHandler,
   createUserHandler,
   updateUserHandler,
+  deleteUserHandler,
 } from './handlers';
 const baseUsersPath = '/api/users';
 
@@ -16,5 +17,7 @@ addRoute('GET', baseUsersPath, getUsersHandler);
 addRoute('POST', baseUsersPath, createUserHandler);
 
 addRoute('PUT', `${baseUsersPath}/{userId}`, updateUserHandler);
+
+addRoute('DELETE', `${baseUsersPath}/{userId}`, deleteUserHandler);
 
 startServer();
