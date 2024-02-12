@@ -7,6 +7,12 @@ export interface User {
   hobbies: [string];
 }
 
+export interface UpdateUserData {
+  username?: string;
+  age?: number;
+  hobbies?: [string];
+}
+
 export interface RouteHandler {
   (req: GetUserInfoRequest, res: ServerResponse): void;
 }

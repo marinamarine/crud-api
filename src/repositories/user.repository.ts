@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
-import { User } from 'models';
+import { UpdateUserData, User } from '../models';
 
 const users: User[] = [];
 
 export const getUsers = (): User[] => users;
 
-export const getUser = (id: string): User | null => {
-  return users.find((user) => user.id === id) || null;
+export const getUser = (id: string): User | undefined => {
+  return users.find((user) => user.id === id);
 };
 
 export const createUser = (user: Omit<User, 'id'>): User => {
@@ -16,4 +16,22 @@ export const createUser = (user: Omit<User, 'id'>): User => {
   };
   users.push(newUser);
   return newUser;
+};
+
+export const updateUser = (
+  id: string,
+  userData: UpdateUserData,
+): User | undefined => {
+  const index = users.findIndex((user) => user.id === id);
+  if (index === -1) {
+    return;
+  }
+  const user = users[index] as User;
+
+  users[index] = {
+    ...user,
+    ...userData,
+  };
+
+  return users[index];
 };
