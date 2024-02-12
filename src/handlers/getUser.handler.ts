@@ -1,8 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { validate } from 'uuid';
 import { getUser } from '../repositories/user.repository';
-import { GetUserInfoRequest, ResponseMessageData, User } from 'models';
-import { createResponse } from '../utils';
+import { GetUserInfoRequest, ResponseMessageData, User } from '../models';
+import { handleResponse } from '../utils';
 import { StatusCode } from '../constants';
 
 export default (
@@ -12,7 +12,7 @@ export default (
   const userId = req?.params?.userId;
   if (userId) {
     if (!validate(userId)) {
-      createResponse<ResponseMessageData>(
+      handleResponse<ResponseMessageData>(
         res,
         StatusCode.ClientErrorBadRequest,
         {
@@ -22,10 +22,10 @@ export default (
     }
     const user = getUser(userId);
     if (user) {
-      createResponse<User>(res, StatusCode.SuccessOK, user);
+      handleResponse<User>(res, StatusCode.SuccessOK, user);
     }
 
-    createResponse<ResponseMessageData>(res, StatusCode.ClientErrorNotFound, {
+    handleResponse<ResponseMessageData>(res, StatusCode.ClientErrorNotFound, {
       message: 'User does not exist',
     });
   }

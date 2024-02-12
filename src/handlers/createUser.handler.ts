@@ -1,6 +1,8 @@
 import { ServerResponse } from 'http';
 import { createUser } from '../repositories/user.repository';
-import { GetUserInfoRequest, User } from 'models';
+import { GetUserInfoRequest, ResponseMessageData, User } from '../models';
+import { handleResponse } from '../utils';
+import { StatusCode } from '../constants';
 
 export default (req: GetUserInfoRequest, res: ServerResponse): void => {
   let body = '';
@@ -11,11 +13,11 @@ export default (req: GetUserInfoRequest, res: ServerResponse): void => {
     const data = JSON.parse(body);
     if (validateUserData(data)) {
       const newUser = createUser(data);
-      res.writeHead(201, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ ...newUser }));
+      handleResponse<User>(res, StatusCode.SuccessCreated, newUser);
     } else {
-      res.writeHead(404, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ message: 'Incorrect data' }));
+      handleResponse<ResponseMessageData>(res, StatusCode.ClientErrorNotFound, {
+        message: 'Incorrect data',
+      });
     }
   });
 };

@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { StatusCode } from '../constants';
 
-export const createResponse = <T>(
+export const handleResponse = <T>(
   res: ServerResponse<IncomingMessage>,
   statusCode: StatusCode,
   data: T,

@@ -1,5 +1,12 @@
 import { ServerResponse } from 'http';
-import { RouteHandler, GetUserInfoRequest, RouteParams } from 'models';
+import {
+  RouteHandler,
+  GetUserInfoRequest,
+  RouteParams,
+  ResponseMessageData,
+} from './models';
+import { handleResponse } from './utils';
+import { StatusCode } from './constants';
 
 function isParam(part: string): boolean {
   return part.startsWith('{') && part.endsWith('}');
@@ -53,12 +60,15 @@ const resolveRoute = (req: GetUserInfoRequest, res: ServerResponse) => {
         handler(req, res);
       }
     } else {
-      res.writeHead(404, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ message: 'Route Not Found' }));
+      handleResponse<ResponseMessageData>(res, StatusCode.ClientErrorNotFound, {
+        message: 'Route Not Found',
+      });
     }
-  } catch {
-    res.writeHead(500, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: 'Internal Server Error' }));
+  } catch (error) {
+    handleResponse<ResponseMessageData>(res, StatusCode.ServerErrorInternal, {
+      message: 'Internal Server Error',
+    });
+    console.log(error);
   }
 };
 
